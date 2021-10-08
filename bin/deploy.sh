@@ -18,4 +18,4 @@ sam deploy \
   --stack-name ${APP} \
   --capabilities "CAPABILITY_IAM" \
   --tags \
-    "application=${APP}" \
+    "application=${APP}"
