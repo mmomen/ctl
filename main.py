@@ -11,7 +11,7 @@ def status(err):
     code = err_message[0:3]
     if code == 400:
         sys.exit(1)
-    else:  # includes 500
+    else:  ## includes 500 errors
         sys.exit(2)
 
 
@@ -19,13 +19,13 @@ def healthcheck():
     healthcheck_url = "https://u3mpbqz6ki.execute-api.us-east-1.amazonaws.com/prod/healthcheck"
 
     try:
-        # get healthcheck
+        ## get healthcheck
         r = requests.get(healthcheck_url)
         r.raise_for_status()
         # print(f'HC Status code: {r.status_code}')
-        # get content
+        ## get content
         c = r.json()
-        # parse content
+        ## parse content
         for key, value in c.items():
             # print(key, ":", value)
             if value == 'ok':
@@ -52,7 +52,7 @@ def todo():
         # print(f'TODO Status code: {r.status_code}')
         c = r.json()
         print(f'TODO-GET request succeeded: {c}')
-        # post request
+        ## post request
         try:
             p = requests.post(todo_url, test_json)
             p.raise_for_status()
@@ -71,6 +71,6 @@ def todo():
         print('An unknown error occured during TODO-GET request')
         sys.exit(2)
 
-
-if __name__ == '__main__':
-    healthcheck()
+## for local testing purposes
+# if __name__ == '__main__':
+#     healthcheck()
