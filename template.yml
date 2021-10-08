@@ -1,0 +1,20 @@
+
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Template to deploy ctl lambda
+
+Parameters:
+
+
+Resources:
+  SimpleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: main.healthcheck
+      Runtime: python3.6
+      Timeout: 200
+    Events:
+      Trigger:
+        Type: Schedule
+        Properties:
+          Schedule: rate(5 minute)
